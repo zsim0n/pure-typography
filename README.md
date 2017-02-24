@@ -1,6 +1,6 @@
 # Pure.css Typography 
 
-A tiny Typography extension for Pure.css. Inspied by Ionic Framework's typography
+A tiny typography extension for Pure.css. Inspied by Ionic Framework's typography
 
 ## Usage
 
@@ -31,6 +31,11 @@ package.json
     }
 }
 ```
+## References
+
+* [Pure.css](http://purecss.io)
+* [Pure.css Icons(ICONO)](https://saeedalipoor.github.io/icono/)
+* [Ionic Framework (V1)](https://ionicframework.com/docs/components/#colors)
 
 ## Contribution
 
@@ -41,13 +46,3 @@ Thank you for taking the time to contribute! See [code of conduct](http://contri
 This project is licensed under the Apache 2.0 License - see the [License](https://choosealicense.com/licenses/apache-2.0/) for details
 # pure-typography
 Typography extension for Pure.css
-
-
-         <h1>References</h1>  
-        <ul>
-            <li><a href="http://purecss.io" target="_blank">Pure.css</a></li>
-            <li><a href="https://ionicframework.com/docs/components/#colors" target="_blank">Ionic V1</li>
-            <li><a href="https://saeedalipoor.github.io/icono/" target="_blank">ICONO - Pure.css Icons</a></li>
-        </ul>
-        
-        </div>
