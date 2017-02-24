@@ -44,5 +44,4 @@ Thank you for taking the time to contribute! See [code of conduct](http://contri
 ## License
 
 This project is licensed under the Apache 2.0 License - see the [License](https://choosealicense.com/licenses/apache-2.0/) for details
-# pure-typography
-Typography extension for Pure.css
+
