@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A tiny set of typography CSS extending Pure.css - Inspied by the Ionic Framework",
   "repository": "https://github.com/zsim0n/pure-typography",
-  "homepage": "https://zsim0n.github.io/pure-typography/",
+  "homepage": "https://zsim0n.github.io/pure-typography",
   "bugs": "https://github.com/zsim0n/pure-typography/issues",
   "license": "Apache-2.0",
   "author": "Zoltan Simon <hello@zoltansimon.me> (http://zoltansimon.me/)",
