@@ -1,18 +1,28 @@
 # Pure.css Typography 
 
-A tiny typography extension for Pure.css. Inspied by Ionic Framework's typography
+A tiny set of CSS for extending Pure.css with some nice typography - Inspied by the Ionic Framework (v1)
 
 ## Usage
 
+### npm
+
 ```
-$ git clone
+npm install pure-typography-i 
+```
+Than you can link the compiled css from the `dist`folder.
+
+## Develop
+
+```
+$ git clone https://github.com/zsim0n/pure-typography.git
 $ cd pure-typography
 $ npm install
-$ npm build:scss
+$ npm start 
 ```
-You can get the minified CSS with source-map  from the  `dist/css/` folder.
 
-Building SCSS.
+npm build scripts and live server included.
+
+
 ```
 package.json
 {
@@ -31,7 +41,7 @@ package.json
     }
 }
 ```
-## References
+## References & Credit
 
 * [Pure.css](http://purecss.io)
 * [Pure.css Icons(ICONO)](https://saeedalipoor.github.io/icono/)
