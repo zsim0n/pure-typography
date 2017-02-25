@@ -1,8 +1,19 @@
 {
-  "name": "pure-typography",
+  "name": "pure-typography-i",
   "version": "0.1.0",
-  "description": "",
-  "main": "dist/index.html",
+  "description": "A tiny set of typography CSS extending Pure.css - Inspied by the Ionic Framework",
+  "repository": "zsim0n/pure-typography",
+  "homepage": "https://zsim0n.github.io/pure-typography/",
+  "bugs": "https://github.com/zsim0n/pure-typography/issues",
+  "license": "Apache-2.0",
+  "author": "Zoltan Simon <hello@zoltansimon.me> (http://zoltansimon.me/)",
+  "main": "dist/pure-typography.css",
+  "keywords": [
+    "purecss",
+    "css",
+    "styles",
+    "typography"
+  ],
   "scripts": {
     "clean": "rimraf dist/{*.html,css/*,js/*,images/*}",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*.css",
@@ -20,8 +31,6 @@
     "postinstall": "npm run build:all && npm run watch:all",
     "deploy": "git-directory-deploy --directory dist --branch gh-pages"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^6.7.3",
     "browser-sync": "^2.18.8",
@@ -36,5 +45,8 @@
     "rimraf": "^2.6.0",
     "svg-sprite-generator": "0.0.7",
     "svgo": "^0.7.2"
+  },
+  "dependencies": {
+    "purecss": "^0.6.2"
   }
 }
