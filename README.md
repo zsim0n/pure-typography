@@ -1,5 +1,4 @@
-# Pure.css Typography 
-## pure-typography-i
+# Pure.css Typography [`pure-typography-i`]
 
 A tiny set of CSS for extending Pure.css with some nice typography - Inspied by the Ionic Framework (v1)
 
