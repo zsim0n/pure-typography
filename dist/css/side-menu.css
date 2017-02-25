@@ -1,0 +1,247 @@
+body {
+    color: #777;
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout,
+#menu,
+.menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    left: 0;
+    padding-left: 0;
+}
+    #layout.active #menu {
+        left: 150px;
+        width: 150px;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+.header {
+     margin: 0;
+     color: #333;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     border-bottom: 1px solid #eee;
+ }
+    .header h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .header h2 {
+        font-weight: 300;
+        color: #ccc;
+        padding: 0;
+        margin-top: 0;
+    }
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
+
+
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+    margin-left: -150px; /* "#menu" width */
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #191818;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+    /*
+    All anchors inside the menu should be styled like this.
+    */
+    #menu a {
+        color: #999;
+        border: none;
+        padding: 0.6em 0 0.6em 0.6em;
+    }
+
+    /*
+    Remove all background/borders, since we are applying them to #menu.
+    */
+     #menu .pure-menu,
+     #menu .pure-menu ul {
+        border: none;
+        background: transparent;
+    }
+
+    /*
+    Add that light border to separate items into groups.
+    */
+    #menu .pure-menu ul,
+    #menu .pure-menu .menu-item-divided {
+        border-top: 1px solid #333;
+    }
+        /*
+        Change color of the anchor links on hover/focus.
+        */
+        #menu .pure-menu li a:hover,
+        #menu .pure-menu li a:focus {
+            background: #333;
+        }
+
+    /*
+    This styles the selected menu item `<li>`.
+    */
+    #menu .pure-menu-selected,
+    #menu .pure-menu-heading {
+        background: #1f8dd6;
+    }
+        /*
+        This styles a link within a selected menu item `<li>`.
+        */
+        #menu .pure-menu-selected a {
+            color: #fff;
+        }
+
+    /*
+    This styles the menu heading.
+    */
+    #menu .pure-menu-heading {
+        font-size: 110%;
+        color: #fff;
+        margin: 0;
+    }
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* "#menu width" */
+    background: #000;
+    background: rgba(0,0,0,0.7);
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+}
+
+    .menu-link:hover,
+    .menu-link:focus {
+        background: #000;
+    }
+
+    .menu-link span {
+        position: relative;
+        display: block;
+    }
+
+    .menu-link span,
+    .menu-link span:before,
+    .menu-link span:after {
+        background-color: #fff;
+        width: 100%;
+        height: 0.2em;
+    }
+
+        .menu-link span:before,
+        .menu-link span:after {
+            position: absolute;
+            margin-top: -0.6em;
+            content: " ";
+        }
+
+        .menu-link span:after {
+            margin-top: 0.6em;
+        }
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 150px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 150px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNpZGUtbWVudS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0NBQ2Y7O0FBRUQ7SUFDSSxnQkFBZ0I7SUFDaEIsYUFBYTtDQUNoQjs7QUFFRDs7RUFFRTtBQUNGOzs7SUFHSSxzQ0FBc0M7SUFJdEMsOEJBQThCO0NBQ2pDOztBQUVEOztFQUVFO0FBQ0Y7SUFDSSxtQkFBbUI7SUFDbkIsUUFBUTtJQUNSLGdCQUFnQjtDQUNuQjtJQUNHO1FBQ0ksWUFBWTtRQUNaLGFBQWE7S0FDaEI7O0lBRUQ7UUFDSSxZQUFZO0tBQ2Y7QUFDTDs7RUFFRTtBQUNGO0lBQ0ksZUFBZTtJQUNmLGVBQWU7SUFDZixpQkFBaUI7SUFDakIsb0JBQW9CO0lBQ3BCLG1CQUFtQjtDQUN0Qjs7QUFFRDtLQUNLLFVBQVU7S0FDVixZQUFZO0tBQ1osbUJBQW1CO0tBQ25CLHFCQUFxQjtLQUNyQiw4QkFBOEI7RUFDakM7SUFDRTtRQUNJLGdCQUFnQjtRQUNoQixlQUFlO1FBQ2YsaUJBQWlCO0tBQ3BCO0tBQ0E7UUFDRyxpQkFBaUI7UUFDakIsWUFBWTtRQUNaLFdBQVc7UUFDWCxjQUFjO0tBQ2pCOztBQUVMO0lBQ0ksc0JBQXNCO0lBQ3RCLGlCQUFpQjtJQUNqQixZQUFZO0NBQ2Y7Ozs7QUFJRDs7O0VBR0U7O0FBRUY7SUFDSSxvQkFBb0IsQ0FBQyxtQkFBbUI7SUFDeEMsYUFBYTtJQUNiLGdCQUFnQjtJQUNoQixPQUFPO0lBQ1AsUUFBUTtJQUNSLFVBQVU7SUFDVixjQUFjLENBQUMsd0RBQXdEO0lBQ3ZFLG9CQUFvQjtJQUNwQixpQkFBaUI7SUFDakIsa0NBQWtDO0NBQ3JDO0lBQ0c7O01BRUU7SUFDRjtRQUNJLFlBQVk7UUFDWixhQUFhO1FBQ2IsNkJBQTZCO0tBQ2hDOztJQUVEOztNQUVFO0tBQ0Q7O1FBRUcsYUFBYTtRQUNiLHdCQUF3QjtLQUMzQjs7SUFFRDs7TUFFRTtJQUNGOztRQUVJLDJCQUEyQjtLQUM5QjtRQUNHOztVQUVFO1FBQ0Y7O1lBRUksaUJBQWlCO1NBQ3BCOztJQUVMOztNQUVFO0lBQ0Y7O1FBRUksb0JBQW9CO0tBQ3ZCO1FBQ0c7O1VBRUU7UUFDRjtZQUNJLFlBQVk7U0FDZjs7SUFFTDs7TUFFRTtJQUNGO1FBQ0ksZ0JBQWdCO1FBQ2hCLFlBQVk7UUFDWixVQUFVO0tBQ2I7O0FBRUwsZ0ZBQWdGOztBQUVoRjs7O0VBR0U7O0FBRUY7OztFQUdFO0FBQ0Y7SUFDSSxnQkFBZ0I7SUFDaEIsZUFBZSxDQUFDLHFDQUFxQztJQUNyRCxPQUFPO0lBQ1AsUUFBUSxDQUFDLG1CQUFtQjtJQUM1QixpQkFBaUI7SUFDakIsNEJBQTRCO0lBQzVCLGdCQUFnQixDQUFDLHdEQUF3RDtJQUN6RSxZQUFZO0lBQ1osV0FBVztJQUNYLGFBQWE7SUFDYixxQkFBcUI7Q0FDeEI7O0lBRUc7O1FBRUksaUJBQWlCO0tBQ3BCOztJQUVEO1FBQ0ksbUJBQW1CO1FBQ25CLGVBQWU7S0FDbEI7O0lBRUQ7OztRQUdJLHVCQUF1QjtRQUN2QixZQUFZO1FBQ1osY0FBYztLQUNqQjs7UUFFRzs7WUFFSSxtQkFBbUI7WUFDbkIsbUJBQW1CO1lBQ25CLGFBQWE7U0FDaEI7O1FBRUQ7WUFDSSxrQkFBa0I7U0FDckI7OztBQUdULGdGQUFnRjs7QUFFaEY7O0VBRUU7QUFDRjs7SUFFSTs7UUFFSSxrQkFBa0I7UUFDbEIsbUJBQW1CO0tBQ3RCOztJQUVEO1FBQ0ksb0JBQW9CLENBQUMsNEJBQTRCO1FBQ2pELFFBQVE7S0FDWDtJQUNEO1FBQ0ksWUFBWTtLQUNmOztJQUVEO1FBQ0ksZ0JBQWdCO1FBQ2hCLFlBQVk7UUFDWixjQUFjO0tBQ2pCOztJQUVEO1FBQ0ksWUFBWTtLQUNmO0NBQ0o7O0FBRUQ7SUFDSTs7Ozs7TUFLRTtJQUNGO1FBQ0ksbUJBQW1CO1FBQ25CLFlBQVk7S0FDZjtDQUNKIiwiZmlsZSI6InNpZGUtbWVudS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgICBjb2xvcjogIzc3Nztcbn1cblxuLnB1cmUtaW1nLXJlc3BvbnNpdmUge1xuICAgIG1heC13aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IGF1dG87XG59XG5cbi8qXG5BZGQgdHJhbnNpdGlvbiB0byBjb250YWluZXJzIHNvIHRoZXkgY2FuIHB1c2ggaW4gYW5kIG91dC5cbiovXG4jbGF5b3V0LFxuI21lbnUsXG4ubWVudS1saW5rIHtcbiAgICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2Utb3V0O1xuICAgIC1tb3otdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZS1vdXQ7XG4gICAgLW1zLXRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2Utb3V0O1xuICAgIC1vLXRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2Utb3V0O1xuICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2Utb3V0O1xufVxuXG4vKlxuVGhpcyBpcyB0aGUgcGFyZW50IGA8ZGl2PmAgdGhhdCBjb250YWlucyB0aGUgbWVudSBhbmQgdGhlIGNvbnRlbnQgYXJlYS5cbiovXG4jbGF5b3V0IHtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgbGVmdDogMDtcbiAgICBwYWRkaW5nLWxlZnQ6IDA7XG59XG4gICAgI2xheW91dC5hY3RpdmUgI21lbnUge1xuICAgICAgICBsZWZ0OiAxNTBweDtcbiAgICAgICAgd2lkdGg6IDE1MHB4O1xuICAgIH1cblxuICAgICNsYXlvdXQuYWN0aXZlIC5tZW51LWxpbmsge1xuICAgICAgICBsZWZ0OiAxNTBweDtcbiAgICB9XG4vKlxuVGhlIGNvbnRlbnQgYDxkaXY+YCBpcyB3aGVyZSBhbGwgeW91ciBjb250ZW50IGdvZXMuXG4qL1xuLmNvbnRlbnQge1xuICAgIG1hcmdpbjogMCBhdXRvO1xuICAgIHBhZGRpbmc6IDAgMmVtO1xuICAgIG1heC13aWR0aDogODAwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogNTBweDtcbiAgICBsaW5lLWhlaWdodDogMS42ZW07XG59XG5cbi5oZWFkZXIge1xuICAgICBtYXJnaW46IDA7XG4gICAgIGNvbG9yOiAjMzMzO1xuICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgIHBhZGRpbmc6IDIuNWVtIDJlbSAwO1xuICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2VlZTtcbiB9XG4gICAgLmhlYWRlciBoMSB7XG4gICAgICAgIG1hcmdpbjogMC4yZW0gMDtcbiAgICAgICAgZm9udC1zaXplOiAzZW07XG4gICAgICAgIGZvbnQtd2VpZ2h0OiAzMDA7XG4gICAgfVxuICAgICAuaGVhZGVyIGgyIHtcbiAgICAgICAgZm9udC13ZWlnaHQ6IDMwMDtcbiAgICAgICAgY29sb3I6ICNjY2M7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgIG1hcmdpbi10b3A6IDA7XG4gICAgfVxuXG4uY29udGVudC1zdWJoZWFkIHtcbiAgICBtYXJnaW46IDUwcHggMCAyMHB4IDA7XG4gICAgZm9udC13ZWlnaHQ6IDMwMDtcbiAgICBjb2xvcjogIzg4ODtcbn1cblxuXG5cbi8qXG5UaGUgYCNtZW51YCBgPGRpdj5gIGlzIHRoZSBwYXJlbnQgYDxkaXY+YCB0aGF0IGNvbnRhaW5zIHRoZSBgLnB1cmUtbWVudWAgdGhhdFxuYXBwZWFycyBvbiB0aGUgbGVmdCBzaWRlIG9mIHRoZSBwYWdlLlxuKi9cblxuI21lbnUge1xuICAgIG1hcmdpbi1sZWZ0OiAtMTUwcHg7IC8qIFwiI21lbnVcIiB3aWR0aCAqL1xuICAgIHdpZHRoOiAxNTBweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiAwO1xuICAgIGxlZnQ6IDA7XG4gICAgYm90dG9tOiAwO1xuICAgIHotaW5kZXg6IDEwMDA7IC8qIHNvIHRoZSBtZW51IG9yIGl0cyBuYXZpY29uIHN0YXlzIGFib3ZlIGFsbCBjb250ZW50ICovXG4gICAgYmFja2dyb3VuZDogIzE5MTgxODtcbiAgICBvdmVyZmxvdy15OiBhdXRvO1xuICAgIC13ZWJraXQtb3ZlcmZsb3ctc2Nyb2xsaW5nOiB0b3VjaDtcbn1cbiAgICAvKlxuICAgIEFsbCBhbmNob3JzIGluc2lkZSB0aGUgbWVudSBzaG91bGQgYmUgc3R5bGVkIGxpa2UgdGhpcy5cbiAgICAqL1xuICAgICNtZW51IGEge1xuICAgICAgICBjb2xvcjogIzk5OTtcbiAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICBwYWRkaW5nOiAwLjZlbSAwIDAuNmVtIDAuNmVtO1xuICAgIH1cblxuICAgIC8qXG4gICAgUmVtb3ZlIGFsbCBiYWNrZ3JvdW5kL2JvcmRlcnMsIHNpbmNlIHdlIGFyZSBhcHBseWluZyB0aGVtIHRvICNtZW51LlxuICAgICovXG4gICAgICNtZW51IC5wdXJlLW1lbnUsXG4gICAgICNtZW51IC5wdXJlLW1lbnUgdWwge1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICAgIH1cblxuICAgIC8qXG4gICAgQWRkIHRoYXQgbGlnaHQgYm9yZGVyIHRvIHNlcGFyYXRlIGl0ZW1zIGludG8gZ3JvdXBzLlxuICAgICovXG4gICAgI21lbnUgLnB1cmUtbWVudSB1bCxcbiAgICAjbWVudSAucHVyZS1tZW51IC5tZW51LWl0ZW0tZGl2aWRlZCB7XG4gICAgICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjMzMzO1xuICAgIH1cbiAgICAgICAgLypcbiAgICAgICAgQ2hhbmdlIGNvbG9yIG9mIHRoZSBhbmNob3IgbGlua3Mgb24gaG92ZXIvZm9jdXMuXG4gICAgICAgICovXG4gICAgICAgICNtZW51IC5wdXJlLW1lbnUgbGkgYTpob3ZlcixcbiAgICAgICAgI21lbnUgLnB1cmUtbWVudSBsaSBhOmZvY3VzIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICMzMzM7XG4gICAgICAgIH1cblxuICAgIC8qXG4gICAgVGhpcyBzdHlsZXMgdGhlIHNlbGVjdGVkIG1lbnUgaXRlbSBgPGxpPmAuXG4gICAgKi9cbiAgICAjbWVudSAucHVyZS1tZW51LXNlbGVjdGVkLFxuICAgICNtZW51IC5wdXJlLW1lbnUtaGVhZGluZyB7XG4gICAgICAgIGJhY2tncm91bmQ6ICMxZjhkZDY7XG4gICAgfVxuICAgICAgICAvKlxuICAgICAgICBUaGlzIHN0eWxlcyBhIGxpbmsgd2l0aGluIGEgc2VsZWN0ZWQgbWVudSBpdGVtIGA8bGk+YC5cbiAgICAgICAgKi9cbiAgICAgICAgI21lbnUgLnB1cmUtbWVudS1zZWxlY3RlZCBhIHtcbiAgICAgICAgICAgIGNvbG9yOiAjZmZmO1xuICAgICAgICB9XG5cbiAgICAvKlxuICAgIFRoaXMgc3R5bGVzIHRoZSBtZW51IGhlYWRpbmcuXG4gICAgKi9cbiAgICAjbWVudSAucHVyZS1tZW51LWhlYWRpbmcge1xuICAgICAgICBmb250LXNpemU6IDExMCU7XG4gICAgICAgIGNvbG9yOiAjZmZmO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgfVxuXG4vKiAtLSBEeW5hbWljIEJ1dHRvbiBGb3IgUmVzcG9uc2l2ZSBNZW51IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0qL1xuXG4vKlxuVGhlIGJ1dHRvbiB0byBvcGVuL2Nsb3NlIHRoZSBNZW51IGlzIGN1c3RvbS1tYWRlIGFuZCBub3QgcGFydCBvZiBQdXJlLiBIZXJlJ3NcbmhvdyBpdCB3b3JrczpcbiovXG5cbi8qXG5gLm1lbnUtbGlua2AgcmVwcmVzZW50cyB0aGUgcmVzcG9uc2l2ZSBtZW51IHRvZ2dsZSB0aGF0IHNob3dzL2hpZGVzIG9uXG5zbWFsbCBzY3JlZW5zLlxuKi9cbi5tZW51LWxpbmsge1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICBkaXNwbGF5OiBibG9jazsgLyogc2hvdyB0aGlzIG9ubHkgb24gc21hbGwgc2NyZWVucyAqL1xuICAgIHRvcDogMDtcbiAgICBsZWZ0OiAwOyAvKiBcIiNtZW51IHdpZHRoXCIgKi9cbiAgICBiYWNrZ3JvdW5kOiAjMDAwO1xuICAgIGJhY2tncm91bmQ6IHJnYmEoMCwwLDAsMC43KTtcbiAgICBmb250LXNpemU6IDEwcHg7IC8qIGNoYW5nZSB0aGlzIHZhbHVlIHRvIGluY3JlYXNlL2RlY3JlYXNlIGJ1dHRvbiBzaXplICovXG4gICAgei1pbmRleDogMTA7XG4gICAgd2lkdGg6IDJlbTtcbiAgICBoZWlnaHQ6IGF1dG87XG4gICAgcGFkZGluZzogMi4xZW0gMS42ZW07XG59XG5cbiAgICAubWVudS1saW5rOmhvdmVyLFxuICAgIC5tZW51LWxpbms6Zm9jdXMge1xuICAgICAgICBiYWNrZ3JvdW5kOiAjMDAwO1xuICAgIH1cblxuICAgIC5tZW51LWxpbmsgc3BhbiB7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgfVxuXG4gICAgLm1lbnUtbGluayBzcGFuLFxuICAgIC5tZW51LWxpbmsgc3BhbjpiZWZvcmUsXG4gICAgLm1lbnUtbGluayBzcGFuOmFmdGVyIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGhlaWdodDogMC4yZW07XG4gICAgfVxuXG4gICAgICAgIC5tZW51LWxpbmsgc3BhbjpiZWZvcmUsXG4gICAgICAgIC5tZW51LWxpbmsgc3BhbjphZnRlciB7XG4gICAgICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAtMC42ZW07XG4gICAgICAgICAgICBjb250ZW50OiBcIiBcIjtcbiAgICAgICAgfVxuXG4gICAgICAgIC5tZW51LWxpbmsgc3BhbjphZnRlciB7XG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAwLjZlbTtcbiAgICAgICAgfVxuXG5cbi8qIC0tIFJlc3BvbnNpdmUgU3R5bGVzIChNZWRpYSBRdWVyaWVzKSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovXG5cbi8qXG5IaWRlcyB0aGUgbWVudSBhdCBgNDhlbWAsIGJ1dCBtb2RpZnkgdGhpcyBiYXNlZCBvbiB5b3VyIGFwcCdzIG5lZWRzLlxuKi9cbkBtZWRpYSAobWluLXdpZHRoOiA0OGVtKSB7XG5cbiAgICAuaGVhZGVyLFxuICAgIC5jb250ZW50IHtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAyZW07XG4gICAgICAgIHBhZGRpbmctcmlnaHQ6IDJlbTtcbiAgICB9XG5cbiAgICAjbGF5b3V0IHtcbiAgICAgICAgcGFkZGluZy1sZWZ0OiAxNTBweDsgLyogbGVmdCBjb2wgd2lkdGggXCIjbWVudVwiICovXG4gICAgICAgIGxlZnQ6IDA7XG4gICAgfVxuICAgICNtZW51IHtcbiAgICAgICAgbGVmdDogMTUwcHg7XG4gICAgfVxuXG4gICAgLm1lbnUtbGluayB7XG4gICAgICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICAgICAgbGVmdDogMTUwcHg7XG4gICAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgfVxuXG4gICAgI2xheW91dC5hY3RpdmUgLm1lbnUtbGluayB7XG4gICAgICAgIGxlZnQ6IDE1MHB4O1xuICAgIH1cbn1cblxuQG1lZGlhIChtYXgtd2lkdGg6IDQ4ZW0pIHtcbiAgICAvKiBPbmx5IGFwcGx5IHRoaXMgd2hlbiB0aGUgd2luZG93IGlzIHNtYWxsLiBPdGhlcndpc2UsIHRoZSBmb2xsb3dpbmdcbiAgICBjYXNlIHJlc3VsdHMgaW4gZXh0cmEgcGFkZGluZyBvbiB0aGUgbGVmdDpcbiAgICAgICAgKiBNYWtlIHRoZSB3aW5kb3cgc21hbGwuXG4gICAgICAgICogVGFwIHRoZSBtZW51IHRvIHRyaWdnZXIgdGhlIGFjdGl2ZSBzdGF0ZS5cbiAgICAgICAgKiBNYWtlIHRoZSB3aW5kb3cgbGFyZ2UgYWdhaW4uXG4gICAgKi9cbiAgICAjbGF5b3V0LmFjdGl2ZSB7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgbGVmdDogMTUwcHg7XG4gICAgfVxufVxuIl19 */

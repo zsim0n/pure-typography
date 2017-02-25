@@ -28,7 +28,6 @@
     "serve": "browser-sync start --server 'dist' --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
     "build:all": "npm run build:static && npm run build:scss && npm run build:images ",
     "watch:all": "npm-run-all -p serve watch:static watch:scss watch:images",
-    "postinstall": "npm run build:all",
     "deploy": "git-directory-deploy --directory dist --branch gh-pages",
     "start": "npm run build:all && npm run watch:all"
   },
